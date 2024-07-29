@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ContainerInspectionApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.ContainerInspectionApp.props",
+      "PackagePath": "build\\ContainerInspectionApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.ContainerInspectionApp.props",
+      "PackagePath": "buildMultiTargeting\\ContainerInspectionApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ContainerInspectionApp.props",
+      "PackagePath": "buildTransitive\\ContainerInspectionApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

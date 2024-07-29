@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "GB13tElY/qID7CGKbvWMiECOA/CMOZCQdV0riHCXx74=",
+  "Source": "ContainerInspectionApp",
+  "BasePath": "_content/ContainerInspectionApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ContainerInspectionApp/wwwroot",
+      "Source": "ContainerInspectionApp",
+      "ContentRoot": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/wwwroot/",
+      "BasePath": "_content/ContainerInspectionApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.css",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.css"
+    },
+    {
+      "Identity": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.js",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.js"
+    },
+    {
+      "Identity": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/wwwroot/favicon.ico",
+      "SourceId": "ContainerInspectionApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/wwwroot/",
+      "BasePath": "_content/ContainerInspectionApp",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/favicon.ico"
+    }
+  ]
+}

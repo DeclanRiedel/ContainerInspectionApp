@@ -1,0 +1,25 @@
+﻿@page "/history"
+@attribute [StreamRendering]
+@rendermode InteractiveServer
+@using ContainerInspectionApp.Services
+@inject ContainerTableOperations ContainerTableOperations
+
+<PageTitle>Container History</PageTitle>
+<MudText Typo="Typo.h3" GutterBottom="true">Container History</MudText>
+
+@code {
+
+    private async Task QueryDatabase()
+    {
+        await ContainerTableOperations.InsertData("Hello world");
+
+        var allData = await ContainerTableOperations.GetAllData();
+
+        foreach (var item in allData)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+
+}
