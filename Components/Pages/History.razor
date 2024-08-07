@@ -2,6 +2,7 @@
 @attribute [StreamRendering]
 @rendermode InteractiveServer
 @using ContainerInspectionApp.Services
+@using ContainerInspectionApp.Models
 @inject ContainerTableOperations ContainerTableOperations
 
 <PageTitle>Container History</PageTitle>
@@ -13,29 +14,37 @@
 }
 else
 {
-    <!-- Your existing content here -->
+    <MudTable Items="@containers" Hover="true" Striped="true" Dense="true">
+        <HeaderContent>
+            <MudTh>Container ID</MudTh>
+            <MudTh>Container Type</MudTh>
+            <MudTh>Contents</MudTh>
+            <MudTh>Date Added</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Container ID">@context.ContainerId</MudTd>
+            <MudTd DataLabel="Container Type">@context.ContainerType</MudTd>
+            <MudTd DataLabel="Contents">@context.Contents</MudTd>
+            <MudTd DataLabel="Date Added">@context.DateAdded.ToShortDateString()</MudTd>
+        </RowTemplate>
+    </MudTable>
 }
 
 @code {
     private bool _isDatabaseConnected = true;
+    private List<Container> containers = new List<Container>();
 
     protected override async Task OnInitializedAsync()
     {
         _isDatabaseConnected = await ContainerTableOperations.TestConnection();
-    }
-
-    private async Task QueryDatabase()
-    {
         if (_isDatabaseConnected)
         {
-            await ContainerTableOperations.InsertData("Hello world");
-
-            var allData = await ContainerTableOperations.GetAllData();
-
-            foreach (var item in allData)
-            {
-                Console.WriteLine(item);
-            }
+            await LoadContainers();
         }
+    }
+
+    private async Task LoadContainers()
+    {
+        containers = await ContainerTableOperations.GetAllContainers();
     }
 }

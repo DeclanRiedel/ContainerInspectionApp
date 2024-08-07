@@ -1,12 +1,69 @@
 ﻿@page "/add-container"
+@using ContainerInspectionApp.Services
+@inject ContainerTableOperations ContainerTableOperations
 
-<PageTitle>Contianer Adder Page</PageTitle>
+<PageTitle>Container Adder Page</PageTitle>
 <MudText Typo="Typo.h3" GutterBottom="true">File Container Forms</MudText>
 
-@*write up forms for postgresdb*@
+<MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+    <MudTextField T="string" Label="Container ID" Required="true" RequiredError="Container ID is required!" @bind-Value="containerId" />
+    <MudTextField T="string" Label="Container Type" Required="true" RequiredError="Container Type is required!" @bind-Value="containerType" />
+    <MudTextField T="string" Label="Contents" Required="true" RequiredError="Contents are required!" @bind-Value="contents" />
+    <MudDatePicker Label="Date Added" @bind-Date="dateAdded" />
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" DisableElevation="true" OnClick="@(async () => await SubmitForm())">Submit</MudButton>
+</MudForm>
 
+<MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(async () => await ResetDatabase())">Reset Database</MudButton>
 
-
+@if (!string.IsNullOrEmpty(message))
+{
+    <MudAlert Severity="@alertSeverity" Class="mt-4">@message</MudAlert>
+}
 
 @code {
+    MudForm form;
+    bool success;
+    string[] errors = { };
+    string message = "";
+    Severity alertSeverity = Severity.Success;
+
+    string containerId = "";
+    string containerType = "";
+    string contents = "";
+    DateTime? dateAdded = DateTime.Now;
+
+    private async Task SubmitForm()
+    {
+        await form.Validate();
+        if (form.IsValid)
+        {
+            var result = await ContainerTableOperations.InsertContainer(containerId, containerType, contents, dateAdded.Value);
+            if (result)
+            {
+                message = "Container added successfully!";
+                alertSeverity = Severity.Success;
+                form.Reset();
+            }
+            else
+            {
+                message = "Failed to add container. Please try again.";
+                alertSeverity = Severity.Error;
+            }
+        }
+    }
+
+    private async Task ResetDatabase()
+    {
+        var result = await ContainerTableOperations.ResetDatabase();
+        if (result)
+        {
+            message = "Database reset successfully!";
+            alertSeverity = Severity.Success;
+        }
+        else
+        {
+            message = "Failed to reset database. Please try again.";
+            alertSeverity = Severity.Error;
+        }
+    }
 }
