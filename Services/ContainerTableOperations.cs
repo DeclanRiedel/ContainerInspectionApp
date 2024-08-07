@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ContainerInspectionApp.Models;
 
@@ -9,10 +10,13 @@ namespace ContainerInspectionApp.Services
     public class ContainerTableOperations
     {
         private readonly IConfiguration _configuration;
+        private readonly NpgsqlDataSource _dataSource;
 
         public ContainerTableOperations(IConfiguration configuration)
         {
             _configuration = configuration;
+            var connectionString = GetConnectionString();
+            _dataSource = NpgsqlDataSource.Create(connectionString);
         }
 
         private string GetConnectionString()
@@ -20,67 +24,33 @@ namespace ContainerInspectionApp.Services
             return _configuration.GetConnectionString("container-forms") ?? throw new InvalidOperationException("Connection string 'container-forms' not found.");
         }
 
-        public async Task<bool> TestConnection()
+        public async Task<(bool Success, string ErrorMessage)> TestConnection()
         {
             try
             {
-                var connectionString = GetConnectionString();
-                await using var connection = new NpgsqlConnection(connectionString);
-                await connection.OpenAsync();
-                return true;
+                await using var cmd = _dataSource.CreateCommand("SELECT 1");
+                await cmd.ExecuteScalarAsync();
+                return (true, string.Empty);
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                return (false, $"Connection failed: {ex.Message}");
             }
         }
 
-        public async Task InsertData(string data)
+        public async Task<bool> InsertContainer(Container container)
         {
-            var connectionString = GetConnectionString();
-
-            await using var dataSource = NpgsqlDataSource.Create(connectionString);
-
-            await using (var cmd = dataSource.CreateCommand("INSERT INTO data (some_field) VALUES ($1)"))
-            {
-                cmd.Parameters.AddWithValue(data);
-                await cmd.ExecuteNonQueryAsync();
-            }
-        }
-
-        public async Task<string[]> GetAllData()
-        {
-            var connectionString = GetConnectionString();
-
-            await using var dataSource = NpgsqlDataSource.Create(connectionString);
-
-            var data = new System.Collections.Generic.List<string>();
-
-            await using (var cmd = dataSource.CreateCommand("SELECT some_field FROM data"))
-            await using (var reader = await cmd.ExecuteReaderAsync())
-            {
-                while (await reader.ReadAsync())
-                {
-                    data.Add(reader.GetString(0));
-                }
-            }
-
-            return data.ToArray();
-        }
-
-        public async Task<bool> InsertContainer(string containerId, string containerType, string contents, DateTime dateAdded)
-        {
-            var connectionString = GetConnectionString();
-
-            await using var dataSource = NpgsqlDataSource.Create(connectionString);
-
             try
             {
-                await using var cmd = dataSource.CreateCommand("INSERT INTO containers (container_id, container_type, contents, date_added) VALUES ($1, $2, $3, $4)");
-                cmd.Parameters.AddWithValue(containerId);
-                cmd.Parameters.AddWithValue(containerType);
-                cmd.Parameters.AddWithValue(contents);
-                cmd.Parameters.AddWithValue(dateAdded);
+                await using var cmd = _dataSource.CreateCommand(@"
+                    INSERT INTO containers (container_id, container_type, contents, date_added, location, status) 
+                    VALUES ($1, $2, $3, $4, $5, $6)");
+                cmd.Parameters.AddWithValue(container.ContainerId);
+                cmd.Parameters.AddWithValue(container.ContainerType);
+                cmd.Parameters.AddWithValue(container.Contents);
+                cmd.Parameters.AddWithValue(container.DateAdded ?? DateTime.Now);
+                cmd.Parameters.AddWithValue(container.Location);
+                cmd.Parameters.AddWithValue(container.Status);
                 await cmd.ExecuteNonQueryAsync();
                 return true;
             }
@@ -92,20 +62,18 @@ namespace ContainerInspectionApp.Services
 
         public async Task<bool> ResetDatabase()
         {
-            var connectionString = GetConnectionString();
-
-            await using var dataSource = NpgsqlDataSource.Create(connectionString);
-
             try
             {
-                await using var cmd = dataSource.CreateCommand(@"
+                await using var cmd = _dataSource.CreateCommand(@"
                     DROP TABLE IF EXISTS containers;
                     CREATE TABLE containers (
                         id SERIAL PRIMARY KEY,
                         container_id VARCHAR(50) NOT NULL,
                         container_type VARCHAR(50) NOT NULL,
                         contents TEXT NOT NULL,
-                        date_added DATE NOT NULL
+                        date_added DATE NOT NULL,
+                        location VARCHAR(100) NOT NULL,
+                        status VARCHAR(50) NOT NULL
                     );");
                 await cmd.ExecuteNonQueryAsync();
                 return true;
@@ -118,22 +86,21 @@ namespace ContainerInspectionApp.Services
 
         public async Task<List<Container>> GetAllContainers()
         {
-            var connectionString = GetConnectionString();
-
-            await using var dataSource = NpgsqlDataSource.Create(connectionString);
-
             var containers = new List<Container>();
 
-            await using var cmd = dataSource.CreateCommand("SELECT container_id, container_type, contents, date_added FROM containers ORDER BY date_added DESC");
+            await using var cmd = _dataSource.CreateCommand("SELECT id, container_id, container_type, contents, date_added, location, status FROM containers ORDER BY date_added DESC");
             await using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
                 containers.Add(new Container
                 {
-                    ContainerId = reader.GetString(0),
-                    ContainerType = reader.GetString(1),
-                    Contents = reader.GetString(2),
-                    DateAdded = reader.GetDateTime(3)
+                    Id = reader.GetInt32(0),
+                    ContainerId = reader.GetString(1),
+                    ContainerType = reader.GetString(2),
+                    Contents = reader.GetString(3),
+                    DateAdded = reader.GetDateTime(4),
+                    Location = reader.GetString(5),
+                    Status = reader.GetString(6)
                 });
             }
 

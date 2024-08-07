@@ -10,7 +10,9 @@
 
 @if (!_isDatabaseConnected)
 {
-    <MudAlert Severity="Severity.Error">Unable to connect to the database. Please check your connection settings.</MudAlert>
+    <MudAlert Severity="Severity.Error">
+        Unable to connect to the database. Error: @_connectionError
+    </MudAlert>
 }
 else
 {
@@ -20,23 +22,30 @@ else
             <MudTh>Container Type</MudTh>
             <MudTh>Contents</MudTh>
             <MudTh>Date Added</MudTh>
+            <MudTh>Location</MudTh>
+            <MudTh>Status</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Container ID">@context.ContainerId</MudTd>
             <MudTd DataLabel="Container Type">@context.ContainerType</MudTd>
             <MudTd DataLabel="Contents">@context.Contents</MudTd>
-            <MudTd DataLabel="Date Added">@context.DateAdded.ToShortDateString()</MudTd>
+            <MudTd DataLabel="Date Added">@(context.DateAdded?.ToShortDateString() ?? "N/A")</MudTd>
+            <MudTd DataLabel="Location">@context.Location</MudTd>
+            <MudTd DataLabel="Status">@context.Status</MudTd>
         </RowTemplate>
     </MudTable>
 }
 
 @code {
     private bool _isDatabaseConnected = true;
+    private string _connectionError = string.Empty;
     private List<Container> containers = new List<Container>();
 
     protected override async Task OnInitializedAsync()
     {
-        _isDatabaseConnected = await ContainerTableOperations.TestConnection();
+        var (success, errorMessage) = await ContainerTableOperations.TestConnection();
+        _isDatabaseConnected = success;
+        _connectionError = errorMessage;
         if (_isDatabaseConnected)
         {
             await LoadContainers();

@@ -1,15 +1,18 @@
 ﻿@page "/add-container"
 @using ContainerInspectionApp.Services
+@using ContainerInspectionApp.Models
 @inject ContainerTableOperations ContainerTableOperations
 
-<PageTitle>Container Adder Page</PageTitle>
-<MudText Typo="Typo.h3" GutterBottom="true">File Container Forms</MudText>
+<PageTitle>Add Container</PageTitle>
+<MudText Typo="Typo.h3" GutterBottom="true">Add New Container</MudText>
 
 <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
-    <MudTextField T="string" Label="Container ID" Required="true" RequiredError="Container ID is required!" @bind-Value="containerId" />
-    <MudTextField T="string" Label="Container Type" Required="true" RequiredError="Container Type is required!" @bind-Value="containerType" />
-    <MudTextField T="string" Label="Contents" Required="true" RequiredError="Contents are required!" @bind-Value="contents" />
-    <MudDatePicker Label="Date Added" @bind-Date="dateAdded" />
+    <MudTextField T="string" Label="Container ID" Required="true" RequiredError="Container ID is required!" @bind-Value="container.ContainerId" />
+    <MudTextField T="string" Label="Container Type" Required="true" RequiredError="Container Type is required!" @bind-Value="container.ContainerType" />
+    <MudTextField T="string" Label="Contents" Required="true" RequiredError="Contents are required!" @bind-Value="container.Contents" />
+    <MudDatePicker Label="Date Added" @bind-Date="container.DateAdded" />
+    <MudTextField T="string" Label="Location" Required="true" RequiredError="Location is required!" @bind-Value="container.Location" />
+    <MudTextField T="string" Label="Status" Required="true" RequiredError="Status is required!" @bind-Value="container.Status" />
     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await SubmitForm())">Submit</MudButton>
 </MudForm>
 
@@ -21,16 +24,13 @@
 }
 
 @code {
-    MudForm form;
-    bool success;
-    string[] errors = { };
-    string message = "";
-    Severity alertSeverity = Severity.Success;
+    private MudForm? form;
+    private bool success;
+    private string[] errors = { };
+    private string message = "";
+    private Severity alertSeverity = Severity.Success;
 
-    string containerId = "";
-    string containerType = "";
-    string contents = "";
-    DateTime? dateAdded = DateTime.Now;
+    private Container container = new Container { DateAdded = DateTime.Now };
 
     protected override void OnInitialized()
     {
@@ -39,30 +39,30 @@
 
     private async Task SubmitForm()
     {
-        await form.Validate();
-        if (form.IsValid)
+        if (form != null)
         {
-            var result = await ContainerTableOperations.InsertContainer(containerId, containerType, contents, dateAdded?.Date ?? DateTime.Now.Date);
-            if (result)
+            await form.Validate();
+            if (form.IsValid)
             {
-                message = "Container added successfully!";
-                alertSeverity = Severity.Success;
-                ResetForm();
-            }
-            else
-            {
-                message = "Failed to add container. Please try again.";
-                alertSeverity = Severity.Error;
+                var result = await ContainerTableOperations.InsertContainer(container);
+                if (result)
+                {
+                    message = "Container added successfully!";
+                    alertSeverity = Severity.Success;
+                    ResetForm();
+                }
+                else
+                {
+                    message = "Failed to add container. Please try again.";
+                    alertSeverity = Severity.Error;
+                }
             }
         }
     }
 
     private void ResetForm()
     {
-        containerId = string.Empty;
-        containerType = string.Empty;
-        contents = string.Empty;
-        dateAdded = DateTime.Now;
+        container = new Container { DateAdded = DateTime.Now };
         StateHasChanged();
     }
 
