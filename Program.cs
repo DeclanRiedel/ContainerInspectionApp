@@ -1,5 +1,6 @@
 using MudBlazor.Services;
 using ContainerInspectionApp.Components;
+using ContainerInspectionApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddMudServices();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Add ContainerTableOperations as a scoped service
+builder.Services.AddScoped<ContainerTableOperations>();
 
 var app = builder.Build();
 

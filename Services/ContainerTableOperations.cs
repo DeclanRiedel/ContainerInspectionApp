@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Npgsql;
+using System;
 using System.Threading.Tasks;
 
 namespace ContainerInspectionApp.Services
@@ -13,9 +14,29 @@ namespace ContainerInspectionApp.Services
             _configuration = configuration;
         }
 
+        private string GetConnectionString()
+        {
+            return _configuration.GetConnectionString("container-forms");
+        }
+
+        public async Task<bool> TestConnection()
+        {
+            try
+            {
+                var connectionString = GetConnectionString();
+                await using var connection = new NpgsqlConnection(connectionString);
+                await connection.OpenAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public async Task InsertData(string data)
         {
-            var connectionString = _configuration.GetConnectionString("PostgresConnection");
+            var connectionString = GetConnectionString();
 
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
@@ -28,7 +49,7 @@ namespace ContainerInspectionApp.Services
 
         public async Task<string[]> GetAllData()
         {
-            var connectionString = _configuration.GetConnectionString("PostgresConnection");
+            var connectionString = GetConnectionString();
 
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
 

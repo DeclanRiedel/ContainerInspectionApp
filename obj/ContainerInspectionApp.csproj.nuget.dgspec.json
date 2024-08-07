@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj": {}
+    "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj": {}
   },
   "projects": {
-    "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj": {
+    "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj",
+        "projectUniqueName": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
         "projectName": "ContainerInspectionApp",
-        "projectPath": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj",
-        "packagesPath": "/home/declan/.nuget/packages/",
-        "outputPath": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/obj/",
+        "projectPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
+        "packagesPath": "C:\\Users\\decla\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/declan/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\decla\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/nix/store/m9dbas0s0a0lfgha03hb85cnb3r82bf2-dotnet-sdk-8.0.303/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

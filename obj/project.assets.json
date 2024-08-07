@@ -382,7 +382,7 @@
           }
         }
       },
-      "MudBlazor/7.4.0": {
+      "MudBlazor/7.6.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "8.0.6",
@@ -1084,10 +1084,10 @@
         "microsoft.jsinterop.nuspec"
       ]
     },
-    "MudBlazor/7.4.0": {
-      "sha512": "dm8ZD6OhyI6icE3Si0V3BJvwPZp8fEspPFq4/iQXU8/i7L39/ny2bPgQqPnQmIojppd9cR/H4RdsaBlSLe6rIw==",
+    "MudBlazor/7.6.0": {
+      "sha512": "6UVQ7TvIw/czNyjmqdUGYS+Fk3PJTvbhFy4/agqm2pzwam31lYJbZXPYr5w7CG4aw9QTgj02ajd6xTZaeROiiA==",
       "type": "package",
-      "path": "mudblazor/7.4.0",
+      "path": "mudblazor/7.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1104,7 +1104,7 @@
         "lib/net7.0/MudBlazor.xml",
         "lib/net8.0/MudBlazor.dll",
         "lib/net8.0/MudBlazor.xml",
-        "mudblazor.7.4.0.nupkg.sha512",
+        "mudblazor.7.6.0.nupkg.sha512",
         "mudblazor.nuspec",
         "staticwebassets/MudBlazor.min.css",
         "staticwebassets/MudBlazor.min.js"
@@ -1281,19 +1281,19 @@
     ]
   },
   "packageFolders": {
-    "/home/declan/.nuget/packages/": {}
+    "C:\\Users\\decla\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj",
+      "projectUniqueName": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
       "projectName": "ContainerInspectionApp",
-      "projectPath": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj",
-      "packagesPath": "/home/declan/.nuget/packages/",
-      "outputPath": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/obj/",
+      "projectPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
+      "packagesPath": "C:\\Users\\decla\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/declan/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\decla\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1362,7 +1362,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/nix/store/m9dbas0s0a0lfgha03hb85cnb3r82bf2-dotnet-sdk-8.0.303/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

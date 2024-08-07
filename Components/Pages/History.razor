@@ -7,19 +7,35 @@
 <PageTitle>Container History</PageTitle>
 <MudText Typo="Typo.h3" GutterBottom="true">Container History</MudText>
 
+@if (!_isDatabaseConnected)
+{
+    <MudAlert Severity="Severity.Error">Unable to connect to the database. Please check your connection settings.</MudAlert>
+}
+else
+{
+    <!-- Your existing content here -->
+}
+
 @code {
+    private bool _isDatabaseConnected = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _isDatabaseConnected = await ContainerTableOperations.TestConnection();
+    }
 
     private async Task QueryDatabase()
     {
-        await ContainerTableOperations.InsertData("Hello world");
-
-        var allData = await ContainerTableOperations.GetAllData();
-
-        foreach (var item in allData)
+        if (_isDatabaseConnected)
         {
-            Console.WriteLine(item);
+            await ContainerTableOperations.InsertData("Hello world");
+
+            var allData = await ContainerTableOperations.GetAllData();
+
+            foreach (var item in allData)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
-
-
 }

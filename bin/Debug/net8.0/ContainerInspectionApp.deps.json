@@ -11,7 +11,7 @@
           "FluentValidation": "11.9.2",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
           "Microsoft.Extensions.Configuration.Json": "8.0.0",
-          "MudBlazor": "7.4.0",
+          "MudBlazor": "7.6.0",
           "Npgsql": "8.0.3"
         },
         "runtime": {
@@ -196,7 +196,7 @@
           }
         }
       },
-      "MudBlazor/7.4.0": {
+      "MudBlazor/7.6.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "8.0.6",
           "Microsoft.AspNetCore.Components.Web": "8.0.6",
@@ -204,8 +204,8 @@
         },
         "runtime": {
           "lib/net8.0/MudBlazor.dll": {
-            "assemblyVersion": "7.4.0.0",
-            "fileVersion": "7.4.0.0"
+            "assemblyVersion": "7.6.0.0",
+            "fileVersion": "7.6.0.0"
           }
         }
       },
@@ -389,12 +389,12 @@
       "path": "microsoft.jsinterop/8.0.6",
       "hashPath": "microsoft.jsinterop.8.0.6.nupkg.sha512"
     },
-    "MudBlazor/7.4.0": {
+    "MudBlazor/7.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dm8ZD6OhyI6icE3Si0V3BJvwPZp8fEspPFq4/iQXU8/i7L39/ny2bPgQqPnQmIojppd9cR/H4RdsaBlSLe6rIw==",
-      "path": "mudblazor/7.4.0",
-      "hashPath": "mudblazor.7.4.0.nupkg.sha512"
+      "sha512": "sha512-6UVQ7TvIw/czNyjmqdUGYS+Fk3PJTvbhFy4/agqm2pzwam31lYJbZXPYr5w7CG4aw9QTgj02ajd6xTZaeROiiA==",
+      "path": "mudblazor/7.6.0",
+      "hashPath": "mudblazor.7.6.0.nupkg.sha512"
     },
     "Npgsql/8.0.3": {
       "type": "package",

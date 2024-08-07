@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GB13tElY/qID7CGKbvWMiECOA/CMOZCQdV0riHCXx74=",
+  "Hash": "aanqrA8cSxy+WfANTTnqmAphtyrWCouEHlAOp1TYFJE=",
   "Source": "ContainerInspectionApp",
   "BasePath": "_content/ContainerInspectionApp",
   "Mode": "Default",
@@ -8,19 +8,19 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "ContainerInspectionApp/wwwroot",
+      "Name": "ContainerInspectionApp\\wwwroot",
       "Source": "ContainerInspectionApp",
-      "ContentRoot": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/wwwroot/",
+      "ContentRoot": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\wwwroot\\",
       "BasePath": "_content/ContainerInspectionApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.css",
+      "Identity": "C:\\Users\\decla\\.nuget\\packages\\mudblazor\\7.6.0\\staticwebassets\\MudBlazor.min.css",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/",
+      "ContentRoot": "C:\\Users\\decla\\.nuget\\packages\\mudblazor\\7.6.0\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.css"
+      "OriginalItemSpec": "C:\\Users\\decla\\.nuget\\packages\\mudblazor\\7.6.0\\staticwebassets\\MudBlazor.min.css"
     },
     {
-      "Identity": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.js",
+      "Identity": "C:\\Users\\decla\\.nuget\\packages\\mudblazor\\7.6.0\\staticwebassets\\MudBlazor.min.js",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/",
+      "ContentRoot": "C:\\Users\\decla\\.nuget\\packages\\mudblazor\\7.6.0\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.js",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/home/declan/.nuget/packages/mudblazor/7.4.0/staticwebassets/MudBlazor.min.js"
+      "OriginalItemSpec": "C:\\Users\\decla\\.nuget\\packages\\mudblazor\\7.6.0\\staticwebassets\\MudBlazor.min.js"
     },
     {
-      "Identity": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/wwwroot/favicon.ico",
+      "Identity": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\wwwroot\\favicon.ico",
       "SourceId": "ContainerInspectionApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/wwwroot/",
+      "ContentRoot": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\wwwroot\\",
       "BasePath": "_content/ContainerInspectionApp",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -71,7 +71,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/favicon.ico"
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
     }
   ]
 }
