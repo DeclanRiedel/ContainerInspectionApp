@@ -9,11 +9,11 @@
 <PageTitle>Container History</PageTitle>
 <MudText Typo="Typo.h3" GutterBottom="true">Container History</MudText>
 
-@if (_connectionError != string.Empty)
+@if (!_isDatabaseConnected)
 {
     <MudAlert Severity="Severity.Error" Class="mb-4">@_connectionError</MudAlert>
 }
-else if (containers.Count == 0)
+else if (containers == null || containers.Count == 0)
 {
     <MudAlert Severity="Severity.Info">The database is empty. No containers to display.</MudAlert>
 }
@@ -50,6 +50,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        await base.OnInitializedAsync();
         if (_isDatabaseConnected)
         {
             await LoadContainers();

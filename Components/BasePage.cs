@@ -12,15 +12,18 @@ namespace ContainerInspectionApp.Components
         [Inject] protected IValidator<string> ConnectionStringValidator { get; set; } = default!;
         [Inject] protected ContainerTableOperations ContainerTableOperations { get; set; } = default!;
 
-        protected bool _isDatabaseConnected = false;
-        protected string _connectionError = string.Empty;
+        protected static bool _isDatabaseConnected = false;
+        protected static string _connectionError = string.Empty;
 
         protected override async Task OnInitializedAsync()
         {
-            var connectionString = Configuration.GetConnectionString("container-forms");
-            var validationResult = await ConnectionStringValidator.ValidateAsync(connectionString);
-            _isDatabaseConnected = validationResult.IsValid;
-            _connectionError = validationResult.IsValid ? string.Empty : validationResult.Errors.First().ErrorMessage;
+            if (!_isDatabaseConnected)
+            {
+                var connectionString = Configuration.GetConnectionString("container-forms");
+                var validationResult = await ConnectionStringValidator.ValidateAsync(connectionString);
+                _isDatabaseConnected = validationResult.IsValid;
+                _connectionError = validationResult.IsValid ? string.Empty : validationResult.Errors.First().ErrorMessage;
+            }
             await base.OnInitializedAsync();
         }
     }

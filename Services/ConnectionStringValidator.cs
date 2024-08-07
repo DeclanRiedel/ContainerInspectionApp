@@ -1,10 +1,14 @@
 using FluentValidation;
 using Npgsql;
+using System;
 
 namespace ContainerInspectionApp.Validators
 {
     public class ConnectionStringValidator : AbstractValidator<string>
     {
+        private static NpgsqlDataSource? _cachedDataSource;
+        private static string? _cachedConnectionString;
+
         public ConnectionStringValidator()
         {
             RuleFor(connectionString => connectionString)
@@ -17,8 +21,14 @@ namespace ContainerInspectionApp.Validators
         {
             try
             {
-                using var dataSource = NpgsqlDataSource.Create(connectionString);
-                using var connection = dataSource.OpenConnection();
+                if (connectionString != _cachedConnectionString)
+                {
+                    _cachedDataSource?.Dispose();
+                    _cachedDataSource = NpgsqlDataSource.Create(connectionString);
+                    _cachedConnectionString = connectionString;
+                }
+
+                using var connection = _cachedDataSource.OpenConnection();
                 return true;
             }
             catch
