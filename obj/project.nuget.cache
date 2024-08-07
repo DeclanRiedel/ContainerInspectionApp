@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "10JNetrNA0hndV5+wssiSMPlrg8igxYlZcwVGf7xLBfls1evUJQwm1n7F28igd5aefTe9k8Jbl+OD8gLEcX8lQ==",
+  "dgSpecHash": "8SNQvRfJn7Q=",
   "success": true,
-  "projectFilePath": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/ContainerInspectionApp.csproj",
+  "projectFilePath": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj",
   "expectedPackageFiles": [
     "/home/declan/.nuget/packages/fluentvalidation/11.9.2/fluentvalidation.11.9.2.nupkg.sha512",
     "/home/declan/.nuget/packages/microsoft.aspnetcore.authorization/8.0.6/microsoft.aspnetcore.authorization.8.0.6.nupkg.sha512",

@@ -1286,11 +1286,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/ContainerInspectionApp.csproj",
+      "projectUniqueName": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj",
       "projectName": "ContainerInspectionApp",
-      "projectPath": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/ContainerInspectionApp.csproj",
+      "projectPath": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/ContainerInspectionApp.csproj",
       "packagesPath": "/home/declan/.nuget/packages/",
-      "outputPath": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/obj/",
+      "outputPath": "/home/declan/Devel/Projects/dotnet_Projects/ContainerInspectionApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/declan/.nuget/NuGet/NuGet.Config"
@@ -1362,7 +1362,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/nix/store/xn3pb7426w4kq7ii7zm229h6bivy0agz-dotnet-sdk-8.0.203/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/nix/store/m9dbas0s0a0lfgha03hb85cnb3r82bf2-dotnet-sdk-8.0.303/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
