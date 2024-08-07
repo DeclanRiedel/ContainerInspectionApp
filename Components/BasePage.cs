@@ -1,0 +1,27 @@
+using Microsoft.AspNetCore.Components;
+using ContainerInspectionApp.Services;
+using ContainerInspectionApp.Validators;
+using FluentValidation;
+using Microsoft.Extensions.Configuration;
+
+namespace ContainerInspectionApp.Components
+{
+    public class BasePage : ComponentBase
+    {
+        [Inject] protected IConfiguration Configuration { get; set; } = default!;
+        [Inject] protected IValidator<string> ConnectionStringValidator { get; set; } = default!;
+        [Inject] protected ContainerTableOperations ContainerTableOperations { get; set; } = default!;
+
+        protected bool _isDatabaseConnected = false;
+        protected string _connectionError = string.Empty;
+
+        protected override async Task OnInitializedAsync()
+        {
+            var connectionString = Configuration.GetConnectionString("container-forms");
+            var validationResult = await ConnectionStringValidator.ValidateAsync(connectionString);
+            _isDatabaseConnected = validationResult.IsValid;
+            _connectionError = validationResult.IsValid ? string.Empty : validationResult.Errors.First().ErrorMessage;
+            await base.OnInitializedAsync();
+        }
+    }
+}

@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CYFJavy+oOU=",
+  "dgSpecHash": "tAUVII2jjcA=",
   "success": true,
   "projectFilePath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\decla\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\decla\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\decla\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\decla\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.6\\microsoft.aspnetcore.authorization.8.0.6.nupkg.sha512",
     "C:\\Users\\decla\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.6\\microsoft.aspnetcore.components.8.0.6.nupkg.sha512",
     "C:\\Users\\decla\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.6\\microsoft.aspnetcore.components.analyzers.8.0.6.nupkg.sha512",

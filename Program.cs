@@ -1,6 +1,9 @@
 using MudBlazor.Services;
 using ContainerInspectionApp.Components;
 using ContainerInspectionApp.Services;
+using FluentValidation;
+using ContainerInspectionApp.Validators;
+using ContainerInspectionApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,9 @@ builder.Services.AddRazorComponents()
 
 // Add ContainerTableOperations as a scoped service
 builder.Services.AddScoped<ContainerTableOperations>();
+
+// Add Fluent Validation
+builder.Services.AddScoped<IValidator<string>, ConnectionStringValidator>();
 
 var app = builder.Build();
 

@@ -168,3 +168,6 @@ C:\Users\decla\nix-flake\ContainerInspectionApp\obj\Debug\net8.0\scopedcss\bundl
 C:\Users\decla\nix-flake\ContainerInspectionApp\obj\Debug\net8.0\Containe.2C57416F.Up2Date
 C:\Users\decla\nix-flake\ContainerInspectionApp\obj\Debug\net8.0\ContainerInspectionApp.genruntimeconfig.cache
 C:\Users\decla\nix-flake\ContainerInspectionApp\obj\Debug\net8.0\ref\ContainerInspectionApp.dll
+C:\Users\decla\nix-flake\ContainerInspectionApp\obj\Debug\net8.0\ContainerInspectionApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\decla\nix-flake\ContainerInspectionApp\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\decla\nix-flake\ContainerInspectionApp\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

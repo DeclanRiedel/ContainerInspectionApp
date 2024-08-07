@@ -5,9 +5,8 @@ namespace ContainerInspectionApp.Models
         public int Id { get; set; }
         public string ContainerId { get; set; } = string.Empty;
         public string ContainerType { get; set; } = string.Empty;
-        public string Contents { get; set; } = string.Empty;
-        public DateTime? DateAdded { get; set; }
-        public string Location { get; set; } = string.Empty;
-        public string Status { get; set; } = string.Empty;
+        public string ExtraInfo { get; set; } = string.Empty;
+        public bool IsDamaged { get; set; }
+        public DateTime TimeAdded { get; set; }
     }
 }
