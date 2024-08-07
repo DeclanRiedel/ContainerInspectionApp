@@ -1,23 +1,23 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
+      "Id": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ContainerInspectionApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ContainerInspectionApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ContainerInspectionApp.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.ContainerInspectionApp.props",
       "PackagePath": "build\\ContainerInspectionApp.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ContainerInspectionApp.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.ContainerInspectionApp.props",
       "PackagePath": "buildMultiTargeting\\ContainerInspectionApp.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ContainerInspectionApp.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ContainerInspectionApp.props",
       "PackagePath": "buildTransitive\\ContainerInspectionApp.props"
     }
   ],

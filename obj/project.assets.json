@@ -1281,19 +1281,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\decla\\.nuget\\packages\\": {}
+    "/home/declan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
+      "projectUniqueName": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/ContainerInspectionApp.csproj",
       "projectName": "ContainerInspectionApp",
-      "projectPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
-      "packagesPath": "C:\\Users\\decla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\obj\\",
+      "projectPath": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/ContainerInspectionApp.csproj",
+      "packagesPath": "/home/declan/.nuget/packages/",
+      "outputPath": "/home/declan/Devel/Projects/dotnet_Projects/containerinspectionapp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\decla\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/declan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1362,7 +1362,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/nix/store/xn3pb7426w4kq7ii7zm229h6bivy0agz-dotnet-sdk-8.0.203/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
