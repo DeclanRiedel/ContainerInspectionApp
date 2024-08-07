@@ -17,7 +17,7 @@ namespace ContainerInspectionApp.Services
 
         private string GetConnectionString()
         {
-            return _configuration.GetConnectionString("container-forms");
+            return _configuration.GetConnectionString("container-forms") ?? throw new InvalidOperationException("Connection string 'container-forms' not found.");
         }
 
         public async Task<bool> TestConnection()

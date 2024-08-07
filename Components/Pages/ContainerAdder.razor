@@ -10,7 +10,7 @@
     <MudTextField T="string" Label="Container Type" Required="true" RequiredError="Container Type is required!" @bind-Value="containerType" />
     <MudTextField T="string" Label="Contents" Required="true" RequiredError="Contents are required!" @bind-Value="contents" />
     <MudDatePicker Label="Date Added" @bind-Date="dateAdded" />
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" DisableElevation="true" OnClick="@(async () => await SubmitForm())">Submit</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await SubmitForm())">Submit</MudButton>
 </MudForm>
 
 <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="@(async () => await ResetDatabase())">Reset Database</MudButton>
@@ -32,17 +32,22 @@
     string contents = "";
     DateTime? dateAdded = DateTime.Now;
 
+    protected override void OnInitialized()
+    {
+        form = new MudForm();
+    }
+
     private async Task SubmitForm()
     {
         await form.Validate();
         if (form.IsValid)
         {
-            var result = await ContainerTableOperations.InsertContainer(containerId, containerType, contents, dateAdded.Value);
+            var result = await ContainerTableOperations.InsertContainer(containerId, containerType, contents, dateAdded?.Date ?? DateTime.Now.Date);
             if (result)
             {
                 message = "Container added successfully!";
                 alertSeverity = Severity.Success;
-                form.Reset();
+                ResetForm();
             }
             else
             {
@@ -50,6 +55,15 @@
                 alertSeverity = Severity.Error;
             }
         }
+    }
+
+    private void ResetForm()
+    {
+        containerId = string.Empty;
+        containerType = string.Empty;
+        contents = string.Empty;
+        dateAdded = DateTime.Now;
+        StateHasChanged();
     }
 
     private async Task ResetDatabase()
