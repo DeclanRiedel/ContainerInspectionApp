@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj": {}
+    "C:\\Users\\decla\\nix-flake\\containerinspectionapp\\ContainerInspectionApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj": {
+    "C:\\Users\\decla\\nix-flake\\containerinspectionapp\\ContainerInspectionApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
+        "projectUniqueName": "C:\\Users\\decla\\nix-flake\\containerinspectionapp\\ContainerInspectionApp.csproj",
         "projectName": "ContainerInspectionApp",
-        "projectPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\ContainerInspectionApp.csproj",
+        "projectPath": "C:\\Users\\decla\\nix-flake\\containerinspectionapp\\ContainerInspectionApp.csproj",
         "packagesPath": "C:\\Users\\decla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\obj\\",
+        "outputPath": "C:\\Users\\decla\\nix-flake\\containerinspectionapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\decla\\AppData\\Roaming\\NuGet\\NuGet.Config"

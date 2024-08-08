@@ -5,44 +5,50 @@
 
 <PageTitle>Home</PageTitle>
 
-@if (!_isDatabaseConnected)
-{
-    <MudAlert Severity="Severity.Error" Class="mb-4">
-        Unable to connect to the database. Please check your connection string and try again.
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-16">
+    @if (!_isDatabaseConnected)
+    {
+        <MudAlert Severity="Severity.Error" Class="mb-4">
+            Unable to connect to the database. Please check your connection string and try again.
+        </MudAlert>
+    }
+    else
+    {
+        <MudText Typo="Typo.h3" GutterBottom="true">Container Inspection App</MudText>
+        <MudText Class="mb-8">Welcome to the Container Inspection App, powered by MudBlazor and .NET 8!</MudText>
+
+        <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="OpenConfirmDialog" Class="mb-4">Reset Database</MudButton>
+
+        <MudPaper Elevation="3" Class="pa-4 mt-4">
+            <MudText Typo="Typo.h6" Class="mb-4">Database Statistics:</MudText>
+            <MudText>Total Containers: @totalContainers</MudText>
+            @if (lastContainer != null)
+            {
+                <MudText>Last Added: ID @lastContainer.ContainerId at @lastContainer.TimeAdded.ToString("g")</MudText>
+            }
+        </MudPaper>
+
+        @if (!string.IsNullOrEmpty(message))
+        {
+            <MudAlert Severity="@alertSeverity" Class="mt-4" ShowCloseIcon="true" CloseIconClicked="() => message = string.Empty">@message</MudAlert>
+        }
+    }
+
+    <MudAlert Severity="Severity.Normal" Class="mt-4">
+        You can find documentation and examples on our website here:
+        <MudLink Href="https://mudblazor.com" Target="_blank" Typo="Typo.body2" Color="Color.Primary">
+            <b>www.mudblazor.com</b>
+        </MudLink>
     </MudAlert>
-}
-else
-{
-    <MudText Typo="Typo.h3" GutterBottom="true">Container Inspection App</MudText>
-    <MudText Class="mb-8">Welcome to the Container Inspection App, powered by MudBlazor and .NET 8!</MudText>
-
-    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="ResetDatabase" Class="mb-4">Reset Database</MudButton>
-
-    <MudText Typo="Typo.h6" Class="mt-4">Database Statistics:</MudText>
-    <MudText>Total Containers: @totalContainers</MudText>
-    @if (lastContainer != null)
-    {
-        <MudText>Last Added: ID @lastContainer.ContainerId at @lastContainer.TimeAdded.ToString("g")</MudText>
-    }
-
-    @if (!string.IsNullOrEmpty(message))
-    {
-        <MudAlert Severity="@alertSeverity" Class="mt-4">@message</MudAlert>
-    }
-}
-
-<MudAlert Severity="Severity.Normal" Class="mt-4">
-    You can find documentation and examples on our website here:
-    <MudLink Href="https://mudblazor.com" Target="_blank" Typo="Typo.body2" Color="Color.Primary">
-        <b>www.mudblazor.com</b>
-    </MudLink>
-</MudAlert>
+</MudContainer>
 
 @code {
     private string message = "";
     private MudBlazor.Severity alertSeverity = MudBlazor.Severity.Success;
     private int totalContainers = 0;
     private Container? lastContainer = null;
+
+    [Inject] private IDialogService DialogService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -72,6 +78,29 @@ else
         {
             message = "Failed to reset database. Please try again.";
             alertSeverity = MudBlazor.Severity.Error;
+        }
+    }
+
+    private async Task OpenConfirmDialog()
+    {
+        bool? result = await DialogService.ShowMessageBox(
+            "Confirm Database Reset",
+            "Are you sure you want to reset the database? This action cannot be undone.",
+            yesText: "Reset", cancelText: "Cancel");
+
+        if (result == true)
+        {
+            await ResetDatabase();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!string.IsNullOrEmpty(message))
+        {
+            await Task.Delay(3000);
+            message = string.Empty;
+            StateHasChanged();
         }
     }
 }

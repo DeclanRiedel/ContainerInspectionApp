@@ -24,7 +24,7 @@ namespace ContainerInspectionApp.Validators
                 if (connectionString != _cachedConnectionString)
                 {
                     _cachedDataSource?.Dispose();
-                    _cachedDataSource = NpgsqlDataSource.Create(connectionString);
+                    _cachedDataSource = NpgsqlDataSource.Create(connectionString ?? string.Empty);
                     _cachedConnectionString = connectionString;
                 }
 

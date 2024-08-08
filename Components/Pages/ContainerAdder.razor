@@ -4,34 +4,56 @@
 @inherits BasePage
 
 <PageTitle>Add Container</PageTitle>
-<MudText Typo="Typo.h3" GutterBottom="true">Add New Container</MudText>
 
-@if (!_isDatabaseConnected)
-{
-    <MudAlert Severity="MudBlazor.Severity.Error" Class="mb-4">
-        Unable to connect to the database. Please check your connection string and try again.
-    </MudAlert>
-}
-else
-{
-    <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
-        <MudTextField T="string" Label="Container ID" Required="true" RequiredError="Container ID is required!" @bind-Value="container.ContainerId" />
-        <MudTextField T="string" Label="Container Type" Required="true" RequiredError="Container Type is required!" @bind-Value="container.ContainerType" />
-        <MudTextField T="string" Label="Extra Info" @bind-Value="container.ExtraInfo" />
-        <MudItem>
-            <InputCheckbox @bind-Value="container.IsDamaged" id="isDamaged" />
-            <label for="isDamaged" class="ml-2">Is Damaged</label>
-        </MudItem>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await SubmitForm())">Submit</MudButton>
-    </MudForm>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-16">
+    <MudPaper Elevation="3" Class="pa-4">
+        <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-4">Add New Container</MudText>
 
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="FillRandomInfo">Fill with Random Info</MudButton>
+        @if (!_isDatabaseConnected)
+        {
+            <MudAlert Severity="Severity.Error" Class="mb-4">
+                Unable to connect to the database. Please check your connection string and try again.
+            </MudAlert>
+        }
+        else
+        {
+            <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+                <MudGrid>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField T="string" Label="Container ID" Required="true" RequiredError="Container ID is required!" @bind-Value="container.ContainerId" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField T="string" Label="Container Type" Required="true" RequiredError="Container Type is required!" @bind-Value="container.ContainerType" />
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudTextField T="string" Label="Extra Info" @bind-Value="container.ExtraInfo" Lines="3" />
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudSwitch T="bool" @bind-Checked="container.IsDamaged" Label="Is Damaged" Color="Color.Primary" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField T="string" Label="Manufacturer" @bind-Value="container.Manufacturer" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudDatePicker Label="Manufacture Date" @bind-Date="container.ManufactureDate" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudNumericField T="decimal" Label="Weight (kg)" @bind-Value="container.Weight" />
+                    </MudItem>
+                    <MudItem xs="12" Class="d-flex justify-space-between align-center">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await SubmitForm())">Submit</MudButton>
+                        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="FillRandomInfo">Fill with Random Info</MudButton>
+                    </MudItem>
+                </MudGrid>
+            </MudForm>
 
-    @if (!string.IsNullOrEmpty(message))
-    {
-        <MudAlert Severity="@alertSeverity" Class="mt-4">@message</MudAlert>
-    }
-}
+            @if (!string.IsNullOrEmpty(message))
+            {
+                <MudAlert Severity="@alertSeverity" Class="mt-4" ShowCloseIcon="true" CloseIconClicked="() => message = string.Empty">@message</MudAlert>
+            }
+        }
+    </MudPaper>
+</MudContainer>
 
 @code {
     private MudForm? form;
@@ -83,6 +105,19 @@ else
         container.ContainerType = new[] { "Standard", "Refrigerated", "Tank", "Open Top" }[new Random().Next(4)];
         container.ExtraInfo = $"Random info: {Guid.NewGuid().ToString()}";
         container.IsDamaged = new Random().Next(2) == 0;
+        container.Manufacturer = new[] { "Maersk", "Hapag-Lloyd", "COSCO", "CMA CGM" }[new Random().Next(4)];
+        container.ManufactureDate = DateTime.Now.AddDays(-new Random().Next(365 * 5)); // Random date within the last 5 years
+        container.Weight = (decimal)(new Random().NextDouble() * 20000 + 1000); // Random weight between 1000 and 21000 kg
         StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!string.IsNullOrEmpty(message))
+        {
+            await Task.Delay(3000);
+            message = string.Empty;
+            StateHasChanged();
+        }
     }
 }

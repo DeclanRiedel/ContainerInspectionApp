@@ -5,6 +5,7 @@
 @using ContainerInspectionApp.Models
 @using ContainerInspectionApp.Validators
 @inherits BasePage
+@inject IDialogService DialogService
 
 <PageTitle>Container History</PageTitle>
 <MudText Typo="Typo.h3" GutterBottom="true">Container History</MudText>
@@ -26,17 +27,19 @@ else
             <MudTh>ID</MudTh>
             <MudTh>Container ID</MudTh>
             <MudTh>Container Type</MudTh>
-            <MudTh>Extra Info</MudTh>
             <MudTh>Is Damaged</MudTh>
             <MudTh>Time Added</MudTh>
+            <MudTh Style="text-align: center;">Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="ID">@context.Id</MudTd>
             <MudTd DataLabel="Container ID">@context.ContainerId</MudTd>
             <MudTd DataLabel="Container Type">@context.ContainerType</MudTd>
-            <MudTd DataLabel="Extra Info">@context.ExtraInfo</MudTd>
             <MudTd DataLabel="Is Damaged">@(context.IsDamaged ? "Yes" : "No")</MudTd>
             <MudTd DataLabel="Time Added">@context.TimeAdded.ToString("g")</MudTd>
+            <MudTd Style="text-align: center;">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" OnClick="@(() => OpenContainerDetails(context))">Extra Info</MudButton>
+            </MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager />
@@ -67,5 +70,15 @@ else
         if (string.IsNullOrWhiteSpace(searchString))
             return true;
         return container.ContainerId.Contains(searchString, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private void OpenContainerDetails(Container container)
+    {
+        var parameters = new DialogParameters
+        {
+            { "Container", container }
+        };
+
+        DialogService.Show<ContainerDetailsDialog>("Container Details", parameters);
     }
 }

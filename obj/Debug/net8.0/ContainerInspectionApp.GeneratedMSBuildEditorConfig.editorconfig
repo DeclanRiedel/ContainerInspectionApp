@@ -12,43 +12,47 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ContainerInspectionApp
 build_property.RootNamespace = ContainerInspectionApp
-build_property.ProjectDir = C:\Users\decla\nix-flake\ContainerInspectionApp\
+build_property.ProjectDir = C:\Users\decla\nix-flake\containerinspectionapp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\decla\nix-flake\ContainerInspectionApp
+build_property.MSBuildProjectDirectory = C:\Users\decla\nix-flake\containerinspectionapp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/App.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/Layout/MainLayout.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/Dialogs/ContainerDetailsDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEaWFsb2dzXENvbnRhaW5lckRldGFpbHNEaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/Pages/ContainerAdder.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/Pages/ContainerAdder.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250YWluZXJBZGRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/Pages/Error.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/Pages/History.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/Pages/History.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIaXN0b3J5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/Pages/Home.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/Routes.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/decla/nix-flake/ContainerInspectionApp/Components/_Imports.razor]
+[C:/Users/decla/nix-flake/containerinspectionapp/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

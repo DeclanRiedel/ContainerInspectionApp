@@ -1,7 +1,7 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\decla\\nix-flake\\ContainerInspectionApp\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\decla\\nix-flake\\containerinspectionapp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {

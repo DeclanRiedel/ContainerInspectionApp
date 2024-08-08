@@ -43,13 +43,16 @@ namespace ContainerInspectionApp.Services
             try
             {
                 await using var cmd = _dataSource.CreateCommand(@"
-                    INSERT INTO containers (container_id, container_type, extra_info, is_damaged, time_added) 
-                    VALUES ($1, $2, $3, $4, $5)");
+                    INSERT INTO containers (container_id, container_type, extra_info, is_damaged, time_added, manufacturer, manufacture_date, weight) 
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)");
                 cmd.Parameters.AddWithValue(container.ContainerId);
                 cmd.Parameters.AddWithValue(container.ContainerType);
                 cmd.Parameters.AddWithValue(container.ExtraInfo);
                 cmd.Parameters.AddWithValue(container.IsDamaged);
                 cmd.Parameters.AddWithValue(container.TimeAdded);
+                cmd.Parameters.AddWithValue(container.Manufacturer);
+                cmd.Parameters.AddWithValue(container.ManufactureDate);
+                cmd.Parameters.AddWithValue(container.Weight);
                 await cmd.ExecuteNonQueryAsync();
                 return true;
             }
@@ -75,7 +78,10 @@ namespace ContainerInspectionApp.Services
                         container_type VARCHAR(50) NOT NULL,
                         extra_info TEXT,
                         is_damaged BOOLEAN NOT NULL,
-                        time_added TIMESTAMP NOT NULL
+                        time_added TIMESTAMP NOT NULL,
+                        manufacturer VARCHAR(100),
+                        manufacture_date DATE,
+                        weight DECIMAL(10, 2)
                     );");
                 await cmd.ExecuteNonQueryAsync();
                 return true;
@@ -90,7 +96,7 @@ namespace ContainerInspectionApp.Services
         {
             var containers = new List<Container>();
 
-            await using var cmd = _dataSource.CreateCommand("SELECT id, container_id, container_type, extra_info, is_damaged, time_added FROM containers ORDER BY time_added DESC");
+            await using var cmd = _dataSource.CreateCommand("SELECT id, container_id, container_type, extra_info, is_damaged, time_added, manufacturer, manufacture_date, weight FROM containers ORDER BY time_added DESC");
             await using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
@@ -101,7 +107,10 @@ namespace ContainerInspectionApp.Services
                     ContainerType = reader.GetString(2),
                     ExtraInfo = reader.GetString(3),
                     IsDamaged = reader.GetBoolean(4),
-                    TimeAdded = reader.GetDateTime(5)
+                    TimeAdded = reader.GetDateTime(5),
+                    Manufacturer = reader.IsDBNull(6) ? string.Empty : reader.GetString(6),
+                    ManufactureDate = reader.IsDBNull(7) ? DateTime.MinValue : reader.GetDateTime(7),
+                    Weight = reader.IsDBNull(8) ? 0 : reader.GetDecimal(8)
                 });
             }
 
@@ -137,7 +146,10 @@ namespace ContainerInspectionApp.Services
                         ContainerType = reader.GetString(reader.GetOrdinal("container_type")),
                         ExtraInfo = reader.GetString(reader.GetOrdinal("extra_info")),
                         IsDamaged = reader.GetBoolean(reader.GetOrdinal("is_damaged")),
-                        TimeAdded = reader.GetDateTime(reader.GetOrdinal("time_added"))
+                        TimeAdded = reader.GetDateTime(reader.GetOrdinal("time_added")),
+                        Manufacturer = reader.IsDBNull(reader.GetOrdinal("manufacturer")) ? string.Empty : reader.GetString(reader.GetOrdinal("manufacturer")),
+                        ManufactureDate = reader.IsDBNull(reader.GetOrdinal("manufacture_date")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("manufacture_date")),
+                        Weight = reader.IsDBNull(reader.GetOrdinal("weight")) ? 0 : reader.GetDecimal(reader.GetOrdinal("weight"))
                     };
                 }
                 return null;

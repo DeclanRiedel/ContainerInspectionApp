@@ -1,0 +1,30 @@
+@using ContainerInspectionApp.Models
+@inject IDialogService DialogService
+
+<MudDialog>
+    <TitleContent>
+        <MudText Typo="Typo.h6">Container Details</MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudText><strong>ID:</strong> @Container.Id</MudText>
+        <MudText><strong>Container ID:</strong> @Container.ContainerId</MudText>
+        <MudText><strong>Container Type:</strong> @Container.ContainerType</MudText>
+        <MudText><strong>Extra Info:</strong> @Container.ExtraInfo</MudText>
+        <MudText><strong>Is Damaged:</strong> @(Container.IsDamaged ? "Yes" : "No")</MudText>
+        <MudText><strong>Time Added:</strong> @Container.TimeAdded.ToString("g")</MudText>
+        <MudText><strong>Manufacturer:</strong> @Container.Manufacturer</MudText>
+        <MudText><strong>Manufacture Date:</strong> @(Container.ManufactureDate?.ToString("d") ?? "N/A")</MudText>
+        <MudText><strong>Weight (kg):</strong> @Container.Weight</MudText>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="Close">Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = default!;
+
+    [Parameter] public Container Container { get; set; } = default!;
+
+    private void Close() => MudDialog.Close();
+}

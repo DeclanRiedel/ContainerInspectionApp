@@ -20,9 +20,17 @@ namespace ContainerInspectionApp.Components
             if (!_isDatabaseConnected)
             {
                 var connectionString = Configuration.GetConnectionString("container-forms");
-                var validationResult = await ConnectionStringValidator.ValidateAsync(connectionString);
-                _isDatabaseConnected = validationResult.IsValid;
-                _connectionError = validationResult.IsValid ? string.Empty : validationResult.Errors.First().ErrorMessage;
+                if (connectionString != null)
+                {
+                    var validationResult = await ConnectionStringValidator.ValidateAsync(connectionString);
+                    _isDatabaseConnected = validationResult.IsValid;
+                    _connectionError = validationResult.IsValid ? string.Empty : validationResult.Errors.First().ErrorMessage;
+                }
+                else
+                {
+                    _isDatabaseConnected = false;
+                    _connectionError = "Connection string is missing.";
+                }
             }
             await base.OnInitializedAsync();
         }
